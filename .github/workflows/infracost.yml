@@ -67,7 +67,7 @@ jobs:
         run: |
           export INFRACOST_API_KEY=${{ secrets.INFRACOST_API_KEY }}
           cd ${TF_ROOT}
-          infracost output --path /tmp/infracost.json --show-skipped --format html --out-file report.html
+          infracost output --path ${{ inputs.working-directory }}/tmp/infracost.json --show-skipped --format html --out-file report.html
       # upload the report to artifact so subsequent workflow can download the report and email it as attachment
       - uses: actions/upload-artifact@v3
         with:
