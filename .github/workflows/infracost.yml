@@ -14,7 +14,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    uses: /terraform-infracost-pr.yml
+    uses: ./terraform-infracost-pr.yml
     with:
       terraform-var-file: ./.env/${{ inputs.env || 'dev' }}/terraform.tfvars
       usage-file: ./.env/${{ inputs.env || 'dev' }}/infracost-usage.yml
