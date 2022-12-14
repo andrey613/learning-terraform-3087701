@@ -30,4 +30,3 @@ jobs:
       attachment-flag: true
       attachments: report.html
     secrets: inherit
-    
