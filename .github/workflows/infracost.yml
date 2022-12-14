@@ -4,7 +4,7 @@ on:
   # trigger only when PR is raised because infracost needs to compare two branches to get cost difference
   pull_request:
     branches: [ main ]
-    paths: '../../'
+    paths: 'terraform/**'
 
 permissions:  # added using https://github.com/step-security/secure-workflows
   contents: read
