@@ -62,6 +62,17 @@ jobs:
                           --format=json \
                           --compare-to=/tmp/infracost-base.json \
                           --out-file=/tmp/infracost.json
+      # generate the html report based on the JSON output from last step
+      - name: Generate Infracost Report
+        run: |
+          export INFRACOST_API_KEY=${{ secrets.INFRACOST_API_KEY }}
+          cd ${TF_ROOT}
+          infracost output --path /tmp/infracost.json --show-skipped --format html --out-file report.html
+      # upload the report to artifact so subsequent workflow can download the report and email it as attachment
+      - uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb
+        with:
+          name: report.html
+          path: ${{ inputs.working-directory }}/report.html
 
       # Posts a comment to the PR using the 'update' behavior.
       # This creates a single comment and updates it. The "quietest" option.
