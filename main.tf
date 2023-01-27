@@ -1,9 +1,3 @@
-provider "aws" {
-  region = "eu-west-1"
-  access_key = "AKIAXKMRP4RBFX42OZ5F"
-  secret_key = "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"
-}
-
 data "aws_availability_zones" "azs" {
   state = "available"
 }
